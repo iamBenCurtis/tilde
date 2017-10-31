@@ -404,7 +404,7 @@
 
     _setTime() {
       const date = new Date();
-      const hours = this._pad(date.getHours())
+      var hours = this._pad(date.getHours())
       if (hours > 12) {
           hours -= 12;
       } else if (hours === 0) {
