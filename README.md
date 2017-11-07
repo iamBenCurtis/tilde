@@ -1,6 +1,6 @@
 # Tilde
 
-Inspired by [/r/startpages](https://www.reddit.com/r/startpages)—the idea is to have a homepage for your browser that is functional and sexy.
+Inspired by [/r/startpages](https://www.reddit.com/r/startpages) and forked from [Tilde](https://github.com/cadejscroggins/tilde) by Cade Scroggins — a personal homepage for your browser that is functional and sexy.
 
 ![Screenshot](SCREENSHOT.png?raw=true "Screenshot")
 
@@ -16,28 +16,30 @@ On mobile, you can click the clock to focus the search input.
 
 ### Searching
 
-You can search any of the sites by typing a colon after the site's key, followed by your search query. For example:
+You can search some of the sites by typing a colon after the site's key, followed by your search query. For example:
 
 * Entering `g:tilde` would search [GitHub for tilde](https://github.com/search?q=tilde).
-* Entering `s:radiohead` would search [SoundCloud for radiohead](https://soundcloud.com/search?q=radiohead).
+* Entering `imdb:butterfly effect` would search [IMDB for butterfly effect](http://www.imdb.com/find?ref_=nv_sr_fn&q=butterfly%20effect).
+
+> Not all configured sites have a search function
 
 ### Specific Locations
 
 You can go to a specific location on a site by typing a forward slash after the site's key, followed by the location on the site you'd like to be redirected to. For example:
 
 * Entering `r/r/startpages` would redirect you to [www.reddit.com/r/startpages](https://www.reddit.com/r/startpages)
-* Entering `h/popular` would redirect you to [hypem.com/popular](http://hypem.com/popular).
+* Entering `t/altonbrown` would redirect you to [twitter.com/altonbrown](https://twitter.com/altonbrown).
 
 ### URL Redirects
 
 If you enter in a full domain or URL, you will be redirected to said domain or URL. For example:
 
-* Entering `stallman.org` would redirect you to [stallman.org](https://stallman.org/).
+* Entering `lifehacker.com` would redirect you to [lifehacker.com](http://lifehacker.com/).
 * Entering `https://smile.amazon.com` would redirect you to [smile.amazon.com](https://smile.amazon.com/).
 
 ## Configuration
 
-The above is just the beginning. Open up the [index.html](index.html) file and read through the `CONFIG`!
+The above is just the beginning. Open up the [index.html](index.html) file and read through the `CONFIG` section!
 
 ## License
 
