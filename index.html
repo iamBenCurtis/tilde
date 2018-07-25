@@ -10,7 +10,7 @@
       [null, 'Bing', '*', 'https://www.bing.com', '/search?q={}', '#111'],
       ['Food Safety', 'Food Safety', 'f', 'https://foodsafety.msu.edu', null, '#028539'],
       ['Food Safety', 'D2L', 'd', 'https://d2l.msu.edu/d2l/home', null, '#404040'],
-      ['Food Safety', 'Synology DiskStation', 'nas', 'https://35.10.112.11:4242', null, '#18453B'],
+      ['Food Safety', 'Synology DiskStation', 'nas', 'https://msuofs.com', null, '#18453B'],
       ['Work', 'Google Analytics', 'a', 'https://analytics.google.com', null, '#ff6d00'],
       ['Work', 'GitHub', 'g', 'https://github.com', '/search?q={}', '#333'],
       ['Lurk', 'Facebook', 'F', 'https://www.facebook.com', '/search/top/?q={}', '#3b5998'],
@@ -19,6 +19,21 @@
       ['Watch', 'Netflix', 'n', 'https://www.netflix.com/browse', '/search?q={}', '#e50914'],
       ['Watch', 'YouTube', 'y', 'https://youtube.com', '/results?search_query={}', '#cd201f'],
       ['Search', 'IMDB', 'imdb', 'http://www.imdb.com', '/find?ref_=nv_sr_fn&q={}', '#f5de50'],
+      ['Stuff and Things', 'Versatile Anomaly', 'va', 'https://versatileanomaly.com/wp-admin/', null, '#533893'],
+    ],
+
+    // the category, name, image url, and background color for the restaurants of your choosing
+    restaurants: [
+      ['MSU', 'Shaw Hall', 'https://foodsafety.msu.edu', '#18453B'],
+      ['MSU', 'Akers Hall', 'https://d2l.msu.edu/d2l/home', '#18453B'],
+      ['MSU', 'Snyder-Phillips Hall', 'https://msuofs.com', '#18453B'],
+      ['MSU', 'Brody Hall', 'https://msuofs.com', '#18453B'],
+      ['BBQ', 'Saddleback', 'https://analytics.google.com', '#ff6d00'],
+      ['BBQ', 'Meat', 'https://github.com', '#333'],
+      ['Burgers', 'Five Guys', 'https://www.reddit.com', '#5f99cf'],
+      ['Burgers', 'Hop Cat', 'https://twitter.com', '#1da1f2'],
+      ['Sushi', 'Omi Sushi', 'https://www.netflix.com/browse', '#e50914'],
+      ['Sushi', 'SushiYa', 'https://youtube.com', '#cd201f'],
     ],
 
     // give suggestions as you type
@@ -204,6 +219,13 @@
     font-size: 1.3rem;
     z-index: 1;
   }
+  #lunch {
+    display: block;
+    padding: 8vw;
+    background: #222;
+    font-size: 1.3rem;
+    z-index: 1;
+  }
 
   .category {
     margin-bottom: 2rem;
@@ -220,7 +242,8 @@
     text-transform: uppercase;
   }
 
-  .command a {
+  .command a,
+  .restaurant a {
     display: block;
     position: relative;
     margin: 1em 0;
@@ -229,7 +252,8 @@
     text-decoration: none;
   }
 
-  .command:last-of-type a {
+  .command:last-of-type a,
+  .restaurant:last-of-type a {
     margin-bottom: 0;
   }
 
@@ -245,12 +269,14 @@
     text-align: center;
   }
 
-  .command-name {
+  .command-name,
+  .restaurant-name {
     position: relative;
     overflow: hidden;
   }
 
-  .command-name::after {
+  .command-name::after,
+  .restaurant-name::after {
     content: ' ';
     position: absolute;
     right: 0;
@@ -264,7 +290,9 @@
   }
 
   .command a:hover .command-name::after,
-  .command a:focus .command-name::after {
+  .command a:focus .command-name::after,
+  .restaurant a:hover .restaurant-name::after,
+  .restaurant a:focus .restaurant-name::after {
     transform: translateX(0);
     opacity: 1;
   }
@@ -281,6 +309,7 @@
   }
 
   body.help #help.overlay,
+  body.lunch #lunch.overlay,
   body.form #search-form.overlay {
     visibility: visible;
   }
@@ -318,6 +347,11 @@
       padding: 0;
     }
 
+    #lunch {
+      display: flex;
+      padding: 0;
+    }
+
     .category {
       margin: 2rem 0;
     }
@@ -346,6 +380,9 @@
 </form>
 
 <aside class="overlay center" id="help"></aside>
+
+
+<aside class="overlay center" id="lunch"></aside>
 
 <script>
   const $ = {
@@ -487,6 +524,75 @@
 
     _handleKeydown(e) {
       if ($.key(e) === 'escape') this.toggle(false);
+    }
+
+    _registerEvents() {
+      document.addEventListener('keydown', this._handleKeydown);
+    }
+  }
+
+  class Lunch {
+    constructor(options) {
+      this._el = $.el('#lunch');
+      this._restaurants = options.restaurants;
+      this._newTab = options.newTab;
+      this._toggled = false;
+      this._buildAndAppendLists();
+      this._bindMethods();
+      this._registerEvents();
+    }
+
+    toggle(show) {
+      this._toggled = (typeof show !== 'undefined') ? show : !this._toggled;
+      this._toggled ? $.bodyClassAdd('lunch') : $.bodyClassRemove('lunch');
+    }
+
+    _bindMethods() {
+      this._handleKeydown = this._handleKeydown.bind(this);
+    }
+
+    _buildAndAppendLists() {
+      const lists = document.createElement('ul');
+      lists.classList.add('categories');
+
+      this._getCategories().forEach(category => {
+        lists.insertAdjacentHTML(
+          'beforeend',
+          `<li class="category">
+            <h2 class="category-name">${category}</h2>
+            <ul>${this._buildListRestaurants(category)}</ul>
+          </li>`
+        );
+      });
+
+      this._el.appendChild(lists);
+    }
+
+    _buildListRestaurants(category) {
+      return this._restaurants.map(([cmdCategory, name, url]) => {
+        if (cmdCategory === category) {
+          return (
+            `<li class="restaurant">
+              <a href="${url}" target="${this._newTab ? '_blank' : '_self'}">
+                <span class="restaurant-name">${name}</span>
+              </a>
+            </li>`
+          );
+        }
+      }).join('');
+    }
+
+    _getCategories() {
+      const categories = this._restaurants
+        .map(([category]) => category)
+        .filter(category => category);
+
+      return [...new Set(categories)];
+    }
+
+    _handleKeydown(e) {
+      if ($.key(e) === 'escape') this.toggle(false);
+      if ($.key(e) === 'enter') this.toggle(false);
     }
 
     _registerEvents() {
@@ -776,6 +882,7 @@
   class QueryParser {
     constructor(options) {
       this._commands = options.commands;
+      this._restaurants = options.restaurants;
       this._searchDelimiter = options.searchDelimiter;
       this._pathDelimiter = options.pathDelimiter;
       this._protocolRegex = /^[a-zA-Z]+:\/\//i;
@@ -870,6 +977,7 @@
       this._inputEl = $.el('#search-input');
       this._colors = options.colors;
       this._help = options.help;
+      this._lunch = options.lunch;
       this._suggester = options.suggester;
       this._queryParser = options.queryParser;
       this._instantRedirect = options.instantRedirect;
@@ -925,11 +1033,13 @@
     _handleInput() {
       const newQuery = this._inputEl.value;
       const isHelp = newQuery === '?';
+      const isLunch = newQuery === 'lunch';
       const { isKey } = this._queryParser.parse(newQuery);
       this._inputElVal = newQuery;
       this._setBackgroundFromQuery(newQuery);
-      if (!newQuery || isHelp ) this.hide();
+      if (!newQuery || isHelp || isLunch ) this.hide();
       if (isHelp) this._help.toggle();
+      if (isLunch) this._lunch.toggle();
       if (this._instantRedirect && isKey) this._submitWithValue(newQuery);
       if (this._suggester) this._suggester.suggest(newQuery);
     }
@@ -991,6 +1101,13 @@
     });
   };
 
+  const getLunch = () => {
+    return new Lunch({
+      restaurants: CONFIG.restaurants,
+      newTab: CONFIG.newTab,
+    });
+  };
+
   const getInfluencers = () => {
     const availableInfluencers = {
       Default: DefaultInfluencer,
@@ -1017,6 +1134,7 @@
   const getQueryParser = () => {
     return new QueryParser({
       commands: CONFIG.commands,
+      restaurants: CONFIG.restaurants,
       pathDelimiter: CONFIG.pathDelimiter,
       searchDelimiter: CONFIG.searchDelimiter,
     });
@@ -1026,6 +1144,7 @@
     return new Form({
       colors: CONFIG.colors,
       help: getHelp(),
+      lunch: getLunch(),
       instantRedirect: CONFIG.instantRedirect,
       newTab: CONFIG.newTab,
       queryParser: getQueryParser(),
