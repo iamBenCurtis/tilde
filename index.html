@@ -136,6 +136,7 @@
     defaultSuggestions: {
       'g': ['g/iambencurtis', 'g/issues', 'g/pulls', 'gist.github.com'],
       'r': ['r/r/motorcycles', 'r/r/videography', 'r/r/photography', 'r/r/woahdude'],
+      'a': ['amazon.com'],
     },
 
     /**
@@ -189,10 +190,10 @@
 <style type="text/css">
   :root {
     /* colors */
-    --background: #222;
-    --foreground: #fff;
-    --searchBackground: #333;
-    --searchForeground: #fff;
+    --background: #fffef8;
+    --foreground: #3e4959;
+    --searchBackground: #222;
+    --searchForeground: #fffef8;
 
     /* fonts */
     --font-family: Lato, sans-serif;
@@ -623,9 +624,9 @@
         if (hours > 12) hours -= 12;
         else if (hours === 0) hours = 12;
 
-        amPm =
-          `&nbsp;<span class="am-pm">` +
-          `${date.getHours() > 12 ? 'PM' : 'AM'}</span>`;
+        amPm = '';
+          // `&nbsp;<span class="am-pm">` +
+          // `${date.getHours() > 12 ? 'PM' : 'AM'}</span>`;
       }
 
       const minutes = $.pad(date.getMinutes());
