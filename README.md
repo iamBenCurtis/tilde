@@ -9,7 +9,6 @@ Inspired by [/r/startpages](https://www.reddit.com/r/startpages) and forked from
 To go to a site, enter the corresponding key. To view the available sites and their keys, press `?`. If your input doesn't match any of the commands, a generic Google search will be triggered. For example:
 
 * Entering `r` would redirect you to [www.reddit.com](https://www.reddit.com).
-* Entering `t` would redirect you to [twitter.com](https://twitter.com).
 * Entering `cats` would search [Google for cats](https://encrypted.google.com/search?q=cats).
 
 On mobile, you can click the clock to focus the search input.
@@ -28,7 +27,6 @@ You can search some of the sites by typing a colon after the site's key, followe
 You can go to a specific location on a site by typing a forward slash after the site's key, followed by the location on the site you'd like to be redirected to. For example:
 
 * Entering `r/r/startpages` would redirect you to [www.reddit.com/r/startpages](https://www.reddit.com/r/startpages)
-* Entering `t/altonbrown` would redirect you to [twitter.com/altonbrown](https://twitter.com/altonbrown).
 
 ### URL Redirects
 
@@ -43,4 +41,6 @@ The above is just the beginning. Open up the [index.html](index.html) file and r
 
 ## License
 
-Feel free to use this and modify it however you like.
+[The Lato typeface](https://www.latofonts.com/lato-free-fonts/) has
+[its own license](https://github.com/iambencurtis/tilde/blob/master/fonts/LICENSE).
+You can use and modify everything else however you like.
