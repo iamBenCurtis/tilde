@@ -35,71 +35,40 @@
     // be applied as-is to the command's "background" CSS property.
     commands: [
       {
-        name: 'Bing',
         key: '*',
-        url: 'https://www.bing.com',
+        name: 'Google',
         search: '/search?q={}',
+        url: 'https://www.google.com',
         color: '#111',
       },
       {
         category: 'Work',
-        name: 'Online Food Safety',
+        color: '#028539',
         key: 'f',
+        name: 'Online Food Safety',
         url: 'https://foodsafety.msu.edu',
-        // color: 'linear-gradient(135deg, #028539, #18453b)',
-        hues: ['214', '234'],
       },
       {
         category: 'Work',
-        name: 'D2L',
+        color: '#404040',
         key: 'd',
+        name: 'D2L',
         url: 'https://d2l.msu.edu/d2l/home',
-        color: 'linear-gradient(135deg, #404040, #333)',
       },
       {
         category: 'Work',
-        name: 'Synology DiskStation',
+        color: '#18453b',
         key: 'nas',
+        name: 'Synology DiskStation',
         url: 'https://msuofs.com',
-        color: 'linear-gradient(135deg, #18411b, #18453b)',
       },
       {
-        category: 'Work',
-        name: 'Syllabus',
-        key: 'syllabus',
-        url: '',
-        color: '#111',
-      },
-      {
-        category: 'Work',
-        name: 'OFS',
-        key: 'ofs',
-        url: '',
-        color: '#111',
-      },
-      {
-        category: 'Work',
-        name: 'Framework',
-        key: 'framework',
-        url: '',
-        color: '#111',
-      },
-      {
-        category: 'Work',
-        name: 'VM',
-        key: 'vm',
-        url: '',
-        search: '',
-        color: '#111',
-      },
-      {
-        category: 'Code',
-        name: 'GitHub',
-        key: 'g',
-        url: 'https://github.com',
-        search: '/search?q={}',
-        // color: 'linear-gradient(135deg, #8ccae1, #6dabd6)',
+        category: 'Create',
         hues: ['214', '234'],
+        key: 'g',
+        name: 'GitHub',
+        search: '/search?q={}',
+        url: 'https://github.com',
       },
       {
         category: 'Learn',
@@ -110,79 +79,111 @@
         url: 'https://www.wolframalpha.com',
       },
       {
+        category: 'Learn',
+        hues: ['217', '237'],
+        key: 'wiki',
+        name: 'Wikipedia',
+        search: '/wiki/{}',
+        url: 'https://en.wikipedia.org/wiki/Main_Page',
+      },
+      {
         category: 'Lurk',
-        name: 'Reddit',
-        key: 'r',
-        url: 'https://www.reddit.com',
-        search: '/search?q={}',
-        // color: 'linear-gradient(135deg, #5f99cf, #5f7dcf)',
         hues: ['254', '234'],
-      },
-      {
-        category: 'Lurk',
-        name: 'Facebook',
-        key: 'F',
-        url: 'https://www.facebook.com',
-        search: '/search/top/?q={}',
-        color: 'linear-gradient(135deg, #5f7dcf, #3b5998)',
-      },
-      {
-        category: 'Watch',
-        name: 'Netflix',
-        key: 'n',
-        url: 'https://www.netflix.com/browse',
+        key: 'r',
+        name: 'Reddit',
         search: '/search?q={}',
-        // color: 'linear-gradient(135deg, #e50914, #e50509)',
-        hues: ['357', '357'],
+        url: 'https://www.reddit.com',
       },
       {
         category: 'Watch',
-        name: 'YouTube',
-        key: 'y',
-        url: 'https://youtube.com/feed/subscriptions',
-        search: '/results?search_query={}',
-        // color: 'linear-gradient(135deg, #cd201f, #cd2c1f)',
         hues: ['5', '355'],
+        key: 'y',
+        name: 'YouTube',
+        search: '/results?search_query={}',
+        url: 'https://youtube.com/feed/subscriptions',
+      },
+      {
+        category: 'Watch',
+        hues: ['357', '357'],
+        key: 'n',
+        name: 'Netflix',
+        search: '/search?q={}',
+        url: 'https://www.netflix.com/browse',
       },
       {
         category: 'Search',
-        name: 'Amazon',
+        color: '#FF9900',
         key: 'a',
-        url: 'https://amazon.com',
+        name: 'Amazon',
         search: '/s?k={}',
-        color: 'linear-gradient(135deg, #FF9900, #FF8800)',
+        url: 'https://amazon.com',
       },
       {
         category: 'Search',
-        name: 'IMDB',
+        color: '#f5de50',
         key: 'imdb',
-        url: 'https://www.imdb.com',
+        name: 'IMDB',
         search: '/find?ref_=nv_sr_fn&q={}',
-        color: 'linear-gradient(135deg, #f5de50, #f5ee42)',
+        url: 'https://www.imdb.com',
       },
       {
         category: 'Stuff and Things',
-        name: 'Versatile Anomaly',
+        color: '#533893',
         key: 'va',
+        name: 'Versatile Anomaly',
         url: 'https://versatileanomaly.com/wp-admin/',
-        color: 'linear-gradient(135deg, #533893, #534293)',
       },
       {
-        category: 'Stuff and Things',
-        name: 'Random',
-        key: 'random',
-        url: '',
+        category: 'Browser Organization',
         color: '#111',
+        key: 'RANDOM',
+        name: 'Random',
+        url: 'https://www.google.com',
+      },
+      {
+        category: 'Browser Organization',
+        color: '#111',
+        key: 'RP',
+        name: 'Rooted Pixels',
+        url: 'https://www.google.com',
+      },
+      {
+        category: 'Browser Organization',
+        color: '#111',
+        key: 'OFS',
+        name: 'OFS',
+        url: 'https://www.google.com',
+      },
+      {
+        category: 'Browser Organization',
+        color: '#111',
+        key: 'FRAMEWORK',
+        name: 'Framework',
+        url: 'https://www.google.com',
+      },
+      {
+        category: 'Browser Organization',
+        color: '#111',
+        key: 'SYLLABUS',
+        name: 'Syllabus',
+        url: 'https://www.google.com',
+      },
+      {
+        category: 'Browser Organization',
+        color: '#111',
+        key: 'VM',
+        name: 'VM',
+        search: '/search?q={}',
+        url: 'https://www.google.com',
       },
     ],
-
 
     // Instantly redirect when a key is matched. Put a space before any other
     // queries to prevent unwanted redirects.
     queryInstantRedirect: false,
 
     // Open triggered queries in a new tab.
-    queryNewTab: true,
+    queryNewTab: false,
 
     // The delimiter between a command key and a path. For example, you'd type
     // "r/r/unixporn" to go to "https://reddit.com/r/unixporn".
@@ -197,21 +198,15 @@
     // you'd type "se'cats".
     scripts: {
       se: ['bing', 'ecosia', 'duckduckgo', '*'],
+      sn: ['f', 'n', 's'],
+      sp: ['g/notifications', 'a', 's/client/T7K3RFA1M', 'm/mail/u/1'],
     },
 
     // Default search suggestions for the specified queries.
     suggestionDefaults: {
-      '.': ['./inout/in/invoices/create'],
-      0: ["0'8000", "0'8080"],
-      c: ['c/calendar/u/1/r', 'c/calendar/u/2/r'],
-      d: ['d/drive/u/1/my-drive', 'd/drive/u/2/my-drive'],
-      g: ['g/notifications', 'g/trending', 'g/ossu', 'g/cadejscroggins/tilde'],
-      h: ['h/popular', 'h/popular/lastweek', 'h/tags'],
-      k: ['k/u/1', 'k/u/2'],
-      m: ['m/mail/u/1', 'm/mail/u/2'],
       r: ['r/hot', 'r/new', 'r/top', 'r/r/startpages'],
-      s: ['s/client/T7K3RFA1M', 's/client/T018S4TL7CP'],
       y: ['y/feed/trending'],
+      vm: ['810', '811', '812', '815', '821'],
     },
 
     // The order, limit and minimum characters for each suggestion influencer.
@@ -227,8 +222,8 @@
     // To disable suggestions, remove all influencers.
     suggestionInfluencers: [
       { name: 'Default', limit: 5, minChars: 1 },
-      { name: 'History', limit: 2, minChars: 3 },
-      { name: 'DuckDuckGo', limit: 4, minChars: 2 },
+      { name: 'History', limit: 2, minChars: 1 },
+      { name: 'DuckDuckGo', limit: 5, minChars: 2 },
     ],
 
     // Max number of suggestions that will ever be shown.
@@ -245,8 +240,8 @@
     --help-foreground: #fff;
     --help-command-key-foreground: #000;
 
-    --search-background: #fffef8;
-    --search-foreground: #222;
+    --search-background: #222;
+    --search-foreground: #fffef8;
     --search-highlight-background: hsla(0, 0%, 100%, 0.85);
     --search-highlight-foreground: #000;
 
@@ -260,9 +255,9 @@
 
     --clock-font-family: var(--font-family);
 
-    --base-font-size: 18px;
-    --clock-font-size: 5rem;
-    --search-input-font-size: 3rem;
+    --base-font-size: 20px;
+    --clock-font-size: 4rem;
+    --search-input-font-size: 2rem;
 
     --font-weight-black: 900;
     --font-weight-bold: 700;
@@ -1221,12 +1216,20 @@
     _handleInput() {
       const newQuery = this._inputEl.value;
       const isHelp = newQuery === '?';
+      const isRandom = newQuery === 'RANDOM';
+      const isOFS = newQuery === 'OFS';
+      const isVM = newQuery === 'VM';
+      const isSyllabus = newQuery === 'SYLLABUS';
+      const isFramework = newQuery === 'FRAMEWORK';
+      const isRP = newQuery === 'RP';
       const { isKey } = this._parseQuery(newQuery);
       this._inputElVal = newQuery;
       this._suggester.suggest(newQuery);
       this._setColorsFromQuery(newQuery);
       if (!newQuery || isHelp) this.hide();
       if (isHelp) this._toggleHelp();
+      if (isRandom || isOFS || isVM || isRP) this._inputEl.style.fontSize = "20vw";
+      if (isSyllabus || isFramework) this._inputEl.style.fontSize = "14vw";
       if (this._instantRedirect && isKey) this._submitWithValue(newQuery);
     }
 
