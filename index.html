@@ -46,7 +46,7 @@
         name: 'Google',
         search: '/search?q={}',
         url: 'https://www.google.com',
-        color: '#4285f4',
+        color: '#111',
       },
       {
         category: 'Work',
@@ -1229,6 +1229,7 @@
       const isSyllabus = newQuery === 'SYLLABUS';
       const isFramework = newQuery === 'FRAMEWORK';
       const isRP = newQuery === 'RP';
+      const isGoogle = newQuery === 'G';
       const { isKey } = this._parseQuery(newQuery);
       this._inputElVal = newQuery;
       this._suggester.suggest(newQuery);
@@ -1237,6 +1238,7 @@
       if (isHelp) this._toggleHelp();
       if (isRandom || isOFS || isVM || isRP) this._inputEl.style.fontSize = "20vw";
       if (isSyllabus || isFramework) this._inputEl.style.fontSize = "14vw";
+      if (isGoogle) this._inputEl.style.color = "#4285f4";
       if (this._instantRedirect && isKey) this._submitWithValue(newQuery);
     }
 
