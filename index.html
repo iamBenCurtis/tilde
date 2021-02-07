@@ -35,11 +35,18 @@
     // be applied as-is to the command's "background" CSS property.
     commands: [
       {
+        name: 'Bing',
         key: '*',
+        url: 'https://www.bing.com',
+        search: '/search?q={}',
+        color: '#111',
+      },
+      {
+        key: 'G',
         name: 'Google',
         search: '/search?q={}',
         url: 'https://www.google.com',
-        color: '#111',
+        color: '#4285f4',
       },
       {
         category: 'Work',
